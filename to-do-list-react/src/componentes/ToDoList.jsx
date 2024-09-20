@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 function ToDoList(){
 
-    const [tarefas, setTarefas] = useState(["Estudar", "Limpar quarto", "Fazer compras"])
+    const [tarefas, setTarefas] = useState([])
     const [novaTarefa, setNovaTarefa] = useState("")
 
     function entradaInput(event) {
@@ -15,6 +15,9 @@ function ToDoList(){
             setTarefas(t => [...t, novaTarefa])
             setNovaTarefa("")
         }
+        else {
+            alert('Digite uma tarefa')
+        }
         
     }
 
@@ -24,20 +27,24 @@ function ToDoList(){
     }
 
     function subirTarefa(index) {
-        if(index > 0) {
-            const updatedTarefas = [...tarefas]
-            [updatedTarefas[index], updatedTarefas[index - 1]] = [updatedTarefas[index - 1], updatedTarefas[index]]
-            setTarefas(updatedTarefas)
+        if (index > 0) {
+            const updatedTarefas = [...tarefas];
+            [updatedTarefas[index], updatedTarefas[index - 1]] = 
+            [updatedTarefas[index - 1], updatedTarefas[index]];
+            setTarefas(updatedTarefas);
         }
     }
 
-    function descerTarefa(){
-        if(index < tarefas.length - 1) {
-            const updatedTarefas = [...tarefas]
-            [updatedTarefas[index], updatedTarefas[index + 1]] = [updatedTarefas[index + 1], updatedTarefas[index]]
-            setTarefas(updatedTarefas)
+    function descerTarefa(index) {
+        if (index < tarefas.length - 1) {
+            const updatedTarefas = [...tarefas];
+            [updatedTarefas[index], updatedTarefas[index + 1]] = 
+            [updatedTarefas[index + 1], updatedTarefas[index]];
+            setTarefas(updatedTarefas);
         }
     }
+
+    
     
     return(
         <>
