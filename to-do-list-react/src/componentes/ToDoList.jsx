@@ -11,18 +11,32 @@ function ToDoList(){
 
     function adicionarTarefa() {
 
+        if(novaTarefa.trim() !== "") {
+            setTarefas(t => [...t, novaTarefa])
+            setNovaTarefa("")
+        }
+        
     }
 
     function removerTarefa(index) {
-
+        const updateTarefas = tarefas.filter((_, i) => i !== index)
+        setTarefas(updateTarefas)
     }
 
     function subirTarefa(index) {
-
+        if(index > 0) {
+            const updatedTarefas = [...tarefas]
+            [updatedTarefas[index], updatedTarefas[index - 1]] = [updatedTarefas[index - 1], updatedTarefas[index]]
+            setTarefas(updatedTarefas)
+        }
     }
 
     function descerTarefa(){
-
+        if(index < tarefas.length - 1) {
+            const updatedTarefas = [...tarefas]
+            [updatedTarefas[index], updatedTarefas[index + 1]] = [updatedTarefas[index + 1], updatedTarefas[index]]
+            setTarefas(updatedTarefas)
+        }
     }
     
     return(
